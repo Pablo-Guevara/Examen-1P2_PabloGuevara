@@ -5,6 +5,8 @@
  */
 package examen.pkg1p2_pabloguevara;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ronaldo
@@ -43,6 +45,11 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel2.setText("Contraseña:");
 
         jButton1.setText("Iniciar sesión");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Iniciar sesión");
@@ -101,6 +108,16 @@ public class InicioSesion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jTextUsuario.getText().equals("") || jTextContraseña.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor rellene todas las casillas");
+        }else{
+            if (jTextUsuario.getText().equals("Admin") || jTextContraseña.getText().equals("1234")) {
+                
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

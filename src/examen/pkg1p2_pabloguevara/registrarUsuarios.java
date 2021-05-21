@@ -9,7 +9,6 @@ public class registrarUsuarios extends javax.swing.JFrame {
     private String nombreUsuario;
     private String contraseña;
     private Date fechaNacimiento;
-
     private int numeroTelefonico;
     private String correoElec;
     private String nombreCompleto;
@@ -17,10 +16,11 @@ public class registrarUsuarios extends javax.swing.JFrame {
     private ArrayList<Usuarios> ListaAmigos = new ArrayList();
     private ArrayList<Libros> ListaLibros = new ArrayList();
 
-    
+    ArrayList<Usuarios> listaUsuarios = new ArrayList();
+
     public registrarUsuarios() {
         initComponents();
-      
+
     }
 
     public registrarUsuarios(String nombreUsuario, String contraseña, Date fechaNacimiento, int numeroTelefonico, String correoElec, String nombreCompleto, String generoFavoritoLec) {
@@ -245,20 +245,21 @@ public class registrarUsuarios extends javax.swing.JFrame {
 
         if (jTextnombreUsu.getText().equals("") || jTextContraseña.getText().equals("") || jDateChooserFechaNac == null
                 || jTextFieldNumTel.getText().equals("")
-                || jTextFieldNombleCompleto.getText().equals("")) {
+                || jTextFieldNombleCompleto.getText().equals("") || jTextFieldCorreoElec.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Por favor rellene todos los campos");
-        }else{
-            nombreUsuario=jTextnombreUsu.getText();
-            contraseña=jTextContraseña.getText();
-            fechaNacimiento=jDateChooserFechaNac.getDate();
-            
-            numeroTelefonico=Integer.parseInt(jTextFieldNumTel.getText());
+        } else {
+            nombreUsuario = jTextnombreUsu.getText();
+            contraseña = jTextContraseña.getText();
+            fechaNacimiento = jDateChooserFechaNac.getDate();
 
-            correoElec=jTextFieldCorreoElec.getText();
-            nombreCompleto=jTextFieldNombleCompleto.getText();
-            generoFavoritoLec=jComboBoxGeneroFav.getSelectedItem().toString();
-            
-            Usuarios Users=new Usuarios(nombreUsuario, contraseña, fechaNacimiento, numeroTelefonico, correoElec, nombreCompleto, generoFavoritoLec);
+            numeroTelefonico = Integer.parseInt(jTextFieldNumTel.getText());
+
+            correoElec = jTextFieldCorreoElec.getText();
+            nombreCompleto = jTextFieldNombleCompleto.getText();
+            generoFavoritoLec = jComboBoxGeneroFav.getSelectedItem().toString();
+
+            Usuarios Users = new Usuarios(nombreUsuario, contraseña, fechaNacimiento, numeroTelefonico, correoElec, nombreCompleto, generoFavoritoLec);
+            listaUsuarios.add(Users);
         }
 
 
