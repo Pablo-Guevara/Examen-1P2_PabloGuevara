@@ -114,7 +114,8 @@ public class InicioSesion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Por favor rellene todas las casillas");
         }else{
             if (jTextUsuario.getText().equals("Admin") || jTextContraseña.getText().equals("1234")) {
-                
+                CRUDlibros lib=new CRUDlibros();
+                lib.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
