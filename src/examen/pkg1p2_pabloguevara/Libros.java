@@ -102,6 +102,6 @@ public class Libros {
     public String toString() {
         return "Libros{" + "titulo=" + titulo + ", descripcion=" + descripcion + ", puntaje=" + puntaje + ", copiasDisponible=" + copiasDisponible + ", genero=" + genero + ", precio=" + precio + ", edicion=" + edicion + ", autor=" + autor + ", a\u00f1oPublicacion=" + añoPublicacion + '}';
     }
-    
+     
     
 }

@@ -33,6 +33,7 @@ public class CRUDlibros extends javax.swing.JFrame {
     private int añoPublicacion1;
     private DefaultTableModel tm;
     private DefaultTableModel tm2;
+    private DefaultTableModel tm3;
     ArrayList<Libros> listaLibros = new ArrayList();
 
     public CRUDlibros() {
@@ -52,6 +53,12 @@ public class CRUDlibros extends javax.swing.JFrame {
         tm2 = new DefaultTableModel(null, titulos);
         jTable2.setRowHeight(20);//Ancho de cada casilla
         jTable2.setModel(tm2);
+    }
+    private void PropiedadesTablaH() { //Asignamos columnas y propiedades a la tabla
+        String titulos[] = {"Titulo"};
+        tm3 = new DefaultTableModel(null, titulos);
+        jTable3.setRowHeight(20);//Ancho de cada casilla
+        jTable3.setModel(tm2);
     }
 
     @SuppressWarnings("unchecked")
@@ -109,6 +116,11 @@ public class CRUDlibros extends javax.swing.JFrame {
         jComboBoxPuntaje1 = new javax.swing.JComboBox<>();
         jTextFieldDescipcion1 = new javax.swing.JTextField();
         jTextFieldTitulo1 = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -240,7 +252,7 @@ public class CRUDlibros extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextFieldAñoPubl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar", jPanel1);
@@ -253,7 +265,7 @@ public class CRUDlibros extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 467, Short.MAX_VALUE)
+            .addGap(0, 469, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Eliminar", jPanel3);
@@ -449,10 +461,63 @@ public class CRUDlibros extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jButton3)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel2);
+
+        jLabel12.setText("Historial");
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jButton4.setText("Mostrar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(jLabel12))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(jButton4)))
+                .addContainerGap(89, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jButton4)
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Historial", jPanel5);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Libros");
@@ -507,8 +572,9 @@ public class CRUDlibros extends javax.swing.JFrame {
             listaLibros.add(lib);
         }
         JOptionPane.showMessageDialog(rootPane, "Libro agregado exitosamente");
+        hist.getHistorial().add("Se agrego un libro");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+InicioSesion hist=new InicioSesion();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
  int fila=jTable1.getRowCount(); //Limpia la tabla para agregar una nueva
 
@@ -524,6 +590,7 @@ public class CRUDlibros extends javax.swing.JFrame {
                  listaLibros.get(i).getPrecio(), listaLibros.get(i).getEdicion(), listaLibros.get(i).getAutor(), listaLibros.get(i).getAñoPublicacion()});
         }
         jTable1.setModel(tm);
+        hist.getHistorial().add("Se mostro un libro");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -579,6 +646,7 @@ public class CRUDlibros extends javax.swing.JFrame {
         }
         
         JOptionPane.showMessageDialog(rootPane, "Modificado exitosamente");
+        hist.getHistorial().add("Se modifico un libro");
     }//GEN-LAST:event_jButton3ActionPerformed
 private int posicion;
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -595,6 +663,22 @@ private int posicion;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTitulo1ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int fila2=jTable3.getRowCount(); //Limpia la tabla para agregar una nueva
+System.out.println("fila"+fila2);
+        if (fila2!=0) {
+            for (int i = fila2-1; i >=0; i--) {
+                tm3.removeRow(i);//Vacia la fila
+            }
+        }
+        
+        
+        for (int i = 0; i < hist.getHistorial().size(); i++) {
+            tm3.addRow(new Object[]{hist.getHistorial()});
+        }
+        jTable3.setModel(tm3);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -607,6 +691,7 @@ private int posicion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBoxGenero;
     private javax.swing.JComboBox<String> jComboBoxGenero1;
     private javax.swing.JComboBox<String> jComboBoxPuntaje;
@@ -614,6 +699,7 @@ private int posicion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -636,11 +722,14 @@ private int posicion;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldAutor;
     private javax.swing.JTextField jTextFieldAutor1;
